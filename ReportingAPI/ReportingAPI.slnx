@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/Reporting.Api/Reporting.Api.csproj" />
+  <Project Path="src/Reporting.Application/Reporting.Application.csproj" />
+  <Project Path="src/Reporting.Domain/Reporting.Domain.csproj" />
+  <Project Path="src/Reporting.Infrastructure/Reporting.Infrastructure.csproj" />
+</Solution>
