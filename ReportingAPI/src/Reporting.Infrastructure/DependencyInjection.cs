@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Reporting.Application.Clients;
 using Reporting.Infrastructure.Persistence;
+using Reporting.Infrastructure.Services;
 
 namespace Reporting.Infrastructure;
 
@@ -20,6 +22,8 @@ public static class DependencyInjection
 
         services.AddHealthChecks()
             .AddDbContextCheck<ReportingDbContext>("database");
+
+        services.AddScoped<IClientService, ClientService>();
 
         return services;
     }
