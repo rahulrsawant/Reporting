@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Reporting.Application.Clients;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Reporting.Api.Controllers;
 
 [ApiController]
 [Route("api/clients")]
+[Authorize]
 public class ClientsController : ControllerBase
 {
     private readonly IClientService _clientService;

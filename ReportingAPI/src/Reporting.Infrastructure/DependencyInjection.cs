@@ -20,6 +20,9 @@ public static class DependencyInjection
         services.AddDbContext<ReportingDbContext>(options =>
             options.UseSqlServer(connectionString));
 
+        services.AddDbContext<AppIdentityDbContext>(options =>
+            options.UseSqlServer(connectionString));
+
         services.AddHealthChecks()
             .AddDbContextCheck<ReportingDbContext>("database");
 
