@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Reporting.Infrastructure.Identity;
 using Reporting.Infrastructure.Persistence;
 using Microsoft.OpenApi;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,6 +72,14 @@ app.MapControllers();
 app.MapGroup("/api/auth")
     .MapIdentityApi<ApplicationUser>()
     .WithTags("Auth");
+
+app.MapPost("/api/auth/logout", async (SignInManager<ApplicationUser> signInManager) =>
+{
+    await signInManager.SignOutAsync();
+    return Results.Ok();
+})
+.RequireAuthorization()
+.WithTags("Auth");
 
 app.MapHealthChecks("/health");
 
