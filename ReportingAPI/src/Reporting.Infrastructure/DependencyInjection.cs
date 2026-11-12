@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Reporting.Application.Clients;
+using Reporting.Application.Funds;
 using Reporting.Infrastructure.Persistence;
 using Reporting.Infrastructure.Services;
 
@@ -27,6 +28,7 @@ public static class DependencyInjection
             .AddDbContextCheck<ReportingDbContext>("database");
 
         services.AddScoped<IClientService, ClientService>();
+        services.AddScoped<IFundService, FundService>();
 
         return services;
     }
