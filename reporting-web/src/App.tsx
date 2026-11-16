@@ -3,15 +3,22 @@ import LoginPage from './pages/LoginPage'
 import HomePage from './pages/HomePage'
 import FundsPage from './pages/FundsPage'
 import InvestorsPage from './pages/InvestorsPage'
+import Layout from './components/Layout'
+import RequireAuth from './components/RequireAuth'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/funds" element={<FundsPage />} />
-        <Route path="/investors" element={<InvestorsPage />} />
+
+        <Route element={<RequireAuth />}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/funds" element={<FundsPage />} />
+            <Route path="/investors" element={<InvestorsPage />} />
+          </Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   )
